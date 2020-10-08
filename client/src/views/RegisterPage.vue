@@ -5,7 +5,7 @@
         <div class="col-md-8 bg-info p-0">
           <img src="../images/register.jpg" style="width: 100%;" alt="">
         </div>
-        <div class="col-md-4 bg-dark">
+        <div class="col-md-4 bg-dark d-flex align-items-center justify-content-center">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title text-center"><b>WELCOME TO KANBAN</b></h5>

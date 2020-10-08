@@ -5,7 +5,7 @@
         <div class="col-md-8 bg-dark">
           <img src="../images/Kanban-Development-Board.png" style="width: 100%;" alt="">
         </div>
-        <div class="col-md-4 bg-info">
+        <div class="col-md-4 bg-info d-flex align-items-center justify-content-center">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title text-center"><b>WELCOME TO KANBAN</b></h5>
