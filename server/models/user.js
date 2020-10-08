@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
     hooks: {
       beforeCreate: user => {
-        user.organization = 'Hactiv8',
+        user.organization = 'Hacktiv8',
         user.password = hashPass(user.password)
       }
     }

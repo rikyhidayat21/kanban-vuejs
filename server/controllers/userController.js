@@ -12,7 +12,9 @@ class UserController {
         res.status(201).json({
           id: user.id,
           email: user.email,
+          organization: user.organization,
           msg: 'register success folks!'
+          
         })
       })
       .catch(err => {
