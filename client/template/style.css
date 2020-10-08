@@ -11,7 +11,7 @@ body {
 
 .container-flex {
   display: flex;
-  background-color: rgb(3, 119, 252);
+  background-color: #17A2B8;
   color: white;
   justify-content: space-between;
   position: static;
