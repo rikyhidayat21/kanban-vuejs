@@ -1,4 +1,5 @@
 <template>
+  
   <div class="col-md-3 bg-white rounded">
     <div class="text-center text-white p-2 rounded shadow mt-3" 
       :class="`bg-${category.color}`"

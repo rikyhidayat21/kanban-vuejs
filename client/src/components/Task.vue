@@ -1,4 +1,5 @@
 <template>
+  
   <div class="card shadow mb-3 mt-3" style="max-width: 18rem;">
     <div class="card-header">email pembuat</div>
     <div class="card-body text-black">
