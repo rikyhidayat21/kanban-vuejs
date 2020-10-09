@@ -11,8 +11,12 @@
     <HomePage
       :categories="categories"
     ></HomePage>
-    <LoginPage></LoginPage>
-    <RegisterPage></RegisterPage>
+    <LoginPage
+      @login="login"
+    ></LoginPage>
+    <RegisterPage
+      @register="register"
+    ></RegisterPage>
     <AddPage></AddPage>
     <EditPage></EditPage>
     
@@ -25,6 +29,7 @@ import LoginPage from './views/LoginPage'
 import RegisterPage from './views/RegisterPage'
 import AddPage from './views/AddPage'
 import EditPage from './views/EditPage'
+import axios from 'axios'
 export default {
   name: 'App',
   components: { 
@@ -50,9 +55,45 @@ export default {
           category: 'Done',
           color: 'success'
         }
-      ]
+      ],
+      baseUrl: 'http://localhost:3000'
     }
   },
+  methods: {
+    login(data) {
+      console.log(data)
+      axios({
+        url: `${this.baseUrl}/login`,
+        method: 'post',
+        data: {
+          email: data.email,
+          password: data.password
+        }
+      })
+        .then(({ data }) => {
+          console.log(data, '<< success login')
+        })
+        .catch(err => {
+          console.log(err.response, '<< error login')
+        })
+    },
+    register(data) {
+      axios({
+        url: `${this.baseUrl}/register`,
+        method: 'post',
+        data: {
+          email: data.email,
+          password: data.password
+        }
+      })
+        .then(({ data }) => {
+          console.log(data, '<< success register')
+        })
+        .catch(err => {
+          console.log(err.response, '<< error register')
+        })
+    }
+  }
 }
 </script>
 

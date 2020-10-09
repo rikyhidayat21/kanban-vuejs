@@ -11,14 +11,14 @@
               <div class="card-body">
                 <h5 class="card-title text-center"><b>WELCOME TO KANBAN</b></h5>
                 <p class="card-text text-center">Login</p>
-                <form action="" id="login-form">
+                <form @submit.prevent="login" id="login-form">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" placeholder="Enter email">
+                    <input v-model="email" type="email" class="form-control" placeholder="Enter email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-primary btn-block">Login</button>
                   <p class="mt-2">New here ? <a href="#">Register</a>!</p>
@@ -37,7 +37,18 @@
 
 <script>
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+    login() {
+      this.$emit('login', { email: this.email, password: this.password })
+    }
+  }
 }
 </script>
 
