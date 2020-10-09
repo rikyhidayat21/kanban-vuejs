@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "vue": "^2.6.12",
+    "vue-google-signin-button-directive": "^1.0.3",
     "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {

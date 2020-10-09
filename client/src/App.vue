@@ -3,6 +3,7 @@
 
     <LoginPage
       @login="login"
+      @googleSign='googleSign'
       v-if="isLogin == 'login'"
       @changePage="changePage"
     ></LoginPage>
@@ -181,6 +182,26 @@ export default {
         })
         .catch(err => {
           console.log(err.response, '<< error edit')
+        })
+    },
+    
+    googleSign(idToken) {
+      console.log(idToken)
+      axios({
+        url: `${this.baseUrl}/googleSign`,
+        method: 'post',
+        data: {
+          idToken: idToken
+        }
+      })
+        .then(({data}) => {
+          // console.log(data.jwtToken, '<<< jwt token')
+          localStorage.setItem('access_token', data.jwtToken)
+          this.changePage('homePage')
+          this.fetchTask()
+        })
+        .catch(err => {
+          console.log(err.response, '<< error google sign')
         })
     }
   },

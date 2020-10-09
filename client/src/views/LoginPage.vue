@@ -26,7 +26,7 @@
                 <h6 class="mt-3">
                   <p>Or, use another account:</p>
                 </h6>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <button v-google-signin-button="clientId" class="google-signin-button"> Continue with Google</button>
               </div>
             </div>
           </div>
@@ -42,6 +42,7 @@ export default {
     return {
       email: '',
       password: '',
+      clientId: '1012603273647-fmdno5l6o6li8npuc15s30npjl47qnlr.apps.googleusercontent.com'
     }
   },
   methods: {
@@ -50,11 +51,30 @@ export default {
     },
     register() {
       this.$emit('changePage','register')
+    },
+    // googleSign() {
+    //   this.$emit('')
+    // },
+    OnGoogleAuthSuccess (idToken) {
+      console.log(idToken, '<< token')
+      this.$emit('googleSign', idToken)
+      // Receive the idToken and make your magic with the backend
+    },
+    OnGoogleAuthFail (error) {
+      console.log(error, '<< error')
     }
   }
 }
 </script>
 
 <style>
-
+.google-signin-button {
+  color: white;
+  background-color: red;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 20px 25px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 </style>

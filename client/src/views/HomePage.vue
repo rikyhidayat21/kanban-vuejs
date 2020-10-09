@@ -3,7 +3,7 @@
     <!-- navbar -->
     <!-- <h1>{{message}}</h1> -->
     <div class="container-flex">
-      <div class="item-flex">Logo</div>
+      <div class="item-flex"><span><b><i>mm</i>T</b></span></div>
       <div class="item-flex" style="letter-spacing: 3px;"><b>KANBAN  BOARD</b></div>
       <div class="item-flex">
         <button class="bg-info rounded" @click.prevent="logout">Logout</button>
