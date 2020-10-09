@@ -1,13 +1,27 @@
 <template>
   <section id="home-page">
+    <!-- navbar -->
+    <!-- <h1>{{message}}</h1> -->
+    <div class="container-flex">
+      <div class="item-flex">Logo</div>
+      <div class="item-flex" style="letter-spacing: 3px;"><b>KANBAN  BOARD</b></div>
+      <div class="item-flex">
+        <button class="bg-danger shadow rounded" @click.prevent="logout">Logout</button>
+      </div>
+    </div>
+    <!-- end of navbar -->
     <div class="container">
-      <h6 class="p-2 text-center mt-4 mb-4 btn-info col-1 rounded shadow" id="add-task">Add Task</h6>
+      <button class="p-2 text-center mt-4 mb-4 btn-info col-1 rounded shadow" id="add-task" @click.prevent="addPage">Add Task</button>
+      <!-- <h6 class="p-2 text-center mt-4 mb-4 btn-info col-1 rounded shadow" id="add-task" @click.prevent="addPage">Add Task</h6> -->
       <div class="row mt-4 mb-4">
         <Category 
           v-for="(category, i) in categories" 
           :key="i"
           :category="category"
+          :tasks="tasks"
+          @deleteTask="deleteTask"
         ></Category>
+        <!-- {{tasks}} -->
       </div>
     </div>
 
@@ -19,7 +33,19 @@ import Category from '../components/Category'
 export default {
   name: 'HomePage',
   components: { Category },
-  props: [ 'categories' ]
+  props: [ 'categories', 'tasks' ],
+  methods: {
+    deleteTask(data) {
+      this.$emit('deleteTask', data)
+    },
+    addPage() {
+      this.$emit('changePage', 'addPage')
+    },
+    logout() {
+      localStorage.clear()
+      this.$emit('changePage', 'login')
+    }
+  }
 }
 </script>
 

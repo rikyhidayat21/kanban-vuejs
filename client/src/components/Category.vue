@@ -4,7 +4,14 @@
     <div class="text-center text-white p-2 rounded shadow mt-3" 
       :class="`bg-${category.color}`"
     >{{category.category}}</div>
-    <Task></Task>
+    <!-- {{tasksPerCategory}} -->
+    <Task
+      :tasks="tasks"
+      v-for="task in tasksPerCategory" 
+      :key="task.id"
+      :task="task"
+      @deleteTask="deleteTask"
+    ></Task>
 
     
   </div>
@@ -15,7 +22,18 @@ import Task from './Task'
 export default {
   name: 'Category',
   components: { Task },
-  props: [ 'category' ]
+  props: [ 'category', 'tasks' ],
+  computed: {
+    tasksPerCategory() {
+      return this.tasks.filter((task) => task.category == this.category.category)
+    }
+  },
+  methods: {
+    deleteTask(data) {
+      console.log(data, '<< data di category')
+      this.$emit('deleteTask', data)
+    }
+  }
 }
 </script>
 
