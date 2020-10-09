@@ -11,6 +11,7 @@
     </div>
     <!-- end of navbar -->
     <div class="container">
+      <!-- <p class="mt-3 text-center">hi {{categories}}</p> -->
       <button class="p-2 text-center mt-4 mb-4 btn-info col-1 rounded shadow" id="add-task" @click.prevent="addPage">Add Task</button>
       <!-- <h6 class="p-2 text-center mt-4 mb-4 btn-info col-1 rounded shadow" id="add-task" @click.prevent="addPage">Add Task</h6> -->
       <div class="row mt-4 mb-4">

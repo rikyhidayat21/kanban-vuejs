@@ -27,6 +27,9 @@
             Edit
           </button>
         </form>
+        <button id="btn-add" type="submit" @click.prevent="backToHomePage" class="btn btn-danger float-left">
+          Cancel
+        </button>
       </div>
     </div>
   </section>
@@ -52,6 +55,9 @@ export default {
         category: this.category
       }
       this.$emit('editTask', payload)
+    },
+    backToHomePage() {
+      this.$emit('changePage', 'homePage')
     }
   }
 }

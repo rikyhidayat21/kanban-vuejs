@@ -27,6 +27,9 @@
             Submit
           </button>
         </form>
+          <button id="btn-add" type="submit" @click.prevent="backToHomePage" class="btn btn-danger float-left">
+            Cancel
+          </button>
       </div>
     </div>
   </section>
@@ -49,6 +52,9 @@ export default {
         description: this.description,
         category: this.category
       })
+    },
+    backToHomePage() {
+      this.$emit('changePage', 'homePage')
     }
   }
 }

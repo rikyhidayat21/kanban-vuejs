@@ -23,11 +23,13 @@
     <AddPage
       v-else-if="isLogin == 'addPage'"
       @addPage="addPage"
+      @changePage="changePage"
     ></AddPage>
     <EditPage
       v-else-if="isLogin == 'editPage'"
       @editTask="editTask"
       :taskDetail="taskDetail"
+      @changePage="changePage"
     ></EditPage>
     
   </section>
@@ -133,11 +135,10 @@ export default {
         headers: { access_token: localStorage.access_token}
       })
         .then(({data}) => {
-          console.log(data, '<< delete jaadi')
           this.fetchTask()
         })
         .catch(err => {
-          console.log(err.response, '<< error delete')
+          console.log(err.response.data.errors, '<< error delete')
         })
     },
     addPage(data){
@@ -153,7 +154,6 @@ export default {
         }
       })
         .then(({ data }) => {
-          console.log(data,' data dari app')
           this.fetchTask()
           this.changePage('homePage')
         })
@@ -181,7 +181,7 @@ export default {
           this.changePage('homePage')
         })
         .catch(err => {
-          console.log(err.response, '<< error edit')
+          console.log(err.response.data.errors, '<< error edit')
         })
     },
     
@@ -195,7 +195,6 @@ export default {
         }
       })
         .then(({data}) => {
-          // console.log(data.jwtToken, '<<< jwt token')
           localStorage.setItem('access_token', data.jwtToken)
           this.changePage('homePage')
           this.fetchTask()

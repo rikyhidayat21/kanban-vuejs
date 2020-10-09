@@ -56,7 +56,7 @@ export default {
     //   this.$emit('')
     // },
     OnGoogleAuthSuccess (idToken) {
-      console.log(idToken, '<< token')
+      // console.log(idToken, '<< token')
       this.$emit('googleSign', idToken)
       // Receive the idToken and make your magic with the backend
     },
