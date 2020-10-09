@@ -352,7 +352,7 @@ _Response (500 - Internal Server Error)_
 
 ### POST /googleSign
 
-> Login user
+> Login Google Sign
 
 _Request Header_
 ```
@@ -374,7 +374,7 @@ _Request Body_
 _Response (200 - OK)_
 ```
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoibWFnc0BtYWlsLmNvbSIsImlhdCI6MTYwMTQzOTM1M30.4oIcQzfdJpw8_WimrsgcMsx7maw75dXmSUvzpZcawOg"
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoibWFnc0BtYWlsLmNvbSIsImlhdCI6MTYwMTQzOTM1M30.4oIcQzfdJpw8_WimrsgcMsx7maw75dXmSUvzpZcawOg"
 }
 ```
 
