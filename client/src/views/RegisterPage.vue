@@ -21,8 +21,8 @@
                   <input v-model="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Register</button>
-                <button type="submit" class="btn btn-danger float-right">Back</button>
               </form>
+              <button type="submit" class="btn btn-danger float-left mt-3" @click.prevent="backToLogin">Back</button>
             </div>
           </div>
         </div>
@@ -43,6 +43,9 @@ export default {
   methods: {
     register() {
       this.$emit('register', {email: this.email, password: this.password})
+    },
+    backToLogin() {
+      this.$emit('changePage', 'login')
     }
   }
 

@@ -21,12 +21,12 @@
                     <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-primary btn-block">Login</button>
-                  <p class="mt-2">New here ? <a href="#">Register</a>!</p>
-                  <h6 class="mt-3">
-                    <p>Or, use another account:</p>
-                  </h6>
-                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </form>
+                <p class="mt-2">New here ? <a href="#" @click.prevent="register">Register</a>!</p>
+                <h6 class="mt-3">
+                  <p>Or, use another account:</p>
+                </h6>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
               </div>
             </div>
           </div>
@@ -47,6 +47,9 @@ export default {
   methods: {
     login() {
       this.$emit('login', { email: this.email, password: this.password })
+    },
+    register() {
+      this.$emit('changePage','register')
     }
   }
 }

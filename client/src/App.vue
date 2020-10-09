@@ -12,10 +12,12 @@
       :tasks="tasks"
       v-else-if="isLogin == 'homePage'"
       @deleteTask="deleteTask"
+      @toUpdatePage="toUpdatePage"
     ></HomePage>
     <RegisterPage
-      @register="register"
       v-else-if="isLogin == 'register'"
+      @register="register"
+      @changePage="changePage"
     ></RegisterPage>
     <AddPage
       v-else-if="isLogin == 'addPage'"
@@ -23,6 +25,8 @@
     ></AddPage>
     <EditPage
       v-else-if="isLogin == 'editPage'"
+      @editTask="editTask"
+      :taskDetail="taskDetail"
     ></EditPage>
     
   </section>
@@ -63,7 +67,8 @@ export default {
       ],
       baseUrl: 'http://localhost:3000',
       isLogin: 'login', 
-      tasks: []
+      tasks: [],
+      taskDetail: {}
     }
   },
   methods: {
@@ -77,7 +82,6 @@ export default {
         }
       })
         .then(({ data }) => {
-          console.log(data, '<< success login')
           localStorage.setItem('access_token', data.access_token)
           this.changePage('homePage')
           this.fetchTask()
@@ -104,7 +108,6 @@ export default {
         })
     },
     changePage(isLogin) {
-      console.log(isLogin)
       this.isLogin = isLogin
     },
     fetchTask() {
@@ -116,7 +119,6 @@ export default {
       })
         .then(({data}) => {
           this.tasks = data.task
-          console.log(data, '<< data dari fetch')
         })
         .catch(err => {
           console.log(err.response, '<< error fetch data')
@@ -157,18 +159,38 @@ export default {
         .catch(err => {
           console.log(err, '<< error add task')
         })
+    },
+    toUpdatePage(task) {
+      this.changePage('editPage')
+      this.taskDetail = task
+    },
+    editTask(payload) {
+      axios({
+        url: `${this.baseUrl}/tasks/${payload.id}`,
+        method: 'put',
+        headers: {access_token: localStorage.access_token},
+        data: {
+          title: payload.title,
+          description: payload.description,
+          category: payload.category
+        }
+      })
+        .then(({data}) => {
+          this.fetchTask()
+          this.changePage('homePage')
+        })
+        .catch(err => {
+          console.log(err.response, '<< error edit')
+        })
     }
   },
   // lifecycle created
   created() {
-    console.log('masuk created')
     if (localStorage.access_token) {
-      console.log('dah ada token')
       this.changePage('homePage')
       this.fetchTask()
     } else {
       this.changePage('login')
-      console.log('blm ada token')
     }
   }
 }

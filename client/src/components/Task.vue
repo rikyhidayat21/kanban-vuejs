@@ -5,7 +5,7 @@
     <div class="card-body text-black">
       <h5 class="card-title">{{ task.title }}</h5>
       <p class="card-text">{{task.description}}</p>
-      <a href="#" class="card-link text-center"><i class="material-icons">mode_edit</i></a>
+      <a href="#" class="card-link text-center"><i class="material-icons" @click="toUpdatePage">mode_edit</i></a>
       <a href="#" class="card-link float-right"><i class="material-icons" @click="deleteTask">delete</i></a>
     </div>
   </div>
@@ -17,8 +17,10 @@ export default {
   props: [ 'task' ],
   methods: {
     deleteTask() {
-      // alert('masukk')
       this.$emit('deleteTask', this.task.id)
+    },
+    toUpdatePage() {
+      this.$emit('toUpdatePage', this.task)
     }
   }
 }

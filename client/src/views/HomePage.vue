@@ -6,7 +6,7 @@
       <div class="item-flex">Logo</div>
       <div class="item-flex" style="letter-spacing: 3px;"><b>KANBAN  BOARD</b></div>
       <div class="item-flex">
-        <button class="bg-danger shadow rounded" @click.prevent="logout">Logout</button>
+        <button class="bg-info rounded" @click.prevent="logout">Logout</button>
       </div>
     </div>
     <!-- end of navbar -->
@@ -20,6 +20,7 @@
           :category="category"
           :tasks="tasks"
           @deleteTask="deleteTask"
+          @toUpdatePage="toUpdatePage"
         ></Category>
         <!-- {{tasks}} -->
       </div>
@@ -44,6 +45,9 @@ export default {
     logout() {
       localStorage.clear()
       this.$emit('changePage', 'login')
+    },
+    toUpdatePage(payload) {
+      this.$emit('toUpdatePage', payload)
     }
   }
 }

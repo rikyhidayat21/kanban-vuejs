@@ -11,6 +11,7 @@
       :key="task.id"
       :task="task"
       @deleteTask="deleteTask"
+      @toUpdatePage="toUpdatePage"
     ></Task>
 
     
@@ -32,6 +33,9 @@ export default {
     deleteTask(data) {
       console.log(data, '<< data di category')
       this.$emit('deleteTask', data)
+    },
+    toUpdatePage(payload) {
+      this.$emit('toUpdatePage', payload)
     }
   }
 }
